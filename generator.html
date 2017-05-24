@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<center>
+<body bgColor=#923947 link="#008000" onload="start(document.forms[0])" onunload="cleartids()">
+<FONT color="#20ffff"><h3><CENTER>Генератор паролей</CENTER></h3></FONT color>
+<script language="JavaScript">
+with (document) {
+	writeln('<title>Генератор паролей </title></head><body bgcolor=black text=white leftmargin=100>' +
+	'<h3>Использовать:</h3><form name=myform>' +
+	'<input name=upper type=checkbox value=0> <b>Заглавные буквы</b><br>' +
+	'<input name=lower type=checkbox value=1> <b>Маленькие буквы</b><br>' +
+	'<input name=digit type=checkbox value=2> <b>Цифры</b><br><br>Число символов в пароле (3-19): ' +
+	'<select name=numbers><option value=3 selected>3</option>');
+	for (j = 4; j <= 19; j++) { writeln('<option value=' + j + '>' + j + '</option>'); }
+	writeln('</select><br><br>' +
+	'<input type=button value=Сгенерировать ... onClick=generate()>   Ваш пароль: ' +
+	'<input name=getback size=30 type=text value=""></form>');
+}
+// массивы символов
+upp = new Array('','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+low = new Array('','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+dig = new Array('','0','1','2','3','4','5','6','7','8','9');
+// --------------------------------------------------------------------------------------------------
+function rnd(x,y,z) { 
+	var num;
+	do {
+		num = parseInt(Math.random()*z);
+		if (num >= x && num <= y) break;
+	} while (true);
+return(num);
+}
+// --------------------------------------------------------------------------------------------------
+function genArray() {																
+	var pwd = '';
+	var res, s;
+	var k = 0;
+	var n = document.myform.numbers.value;
+	var pass = new Array();
+	var w = rnd(30,80,100);
+	for (var r = 0; r < w; r++) {
+		if (myform.upper.checked) { res = rnd(1,26,100); pass[k] = upp[res]; k++; }
+		if (myform.lower.checked) { res = rnd(1,26,100); pass[k] = low[res]; k++; }
+		if (myform.digit.checked) { res = rnd(1,10,100); pass[k] = dig[res]; k++; }
+	}
+	for (var i = 0; i < n; i++) {
+		s = rnd(1,k-1,100);
+		pwd+= pass[s];
+	}
+	document.myform.getback.value = pwd;
+}
+// --------------------------------------------------------------------------------------------------
+function generate() {
+	if (myform.upper.checked || myform.lower.checked || myform.digit.checked)  { genArray(); }
+	else { alert('Должен быть выбран тип символов!'); myform.upper.checked = true; }
+}
+</script>
+</body>
+</html>
+
+
