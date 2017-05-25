@@ -11,9 +11,9 @@ with (document) {
 	'<h3>Использовать:</h3><form name=myform>' +
 	'<input name=upper type=checkbox value=0> <b>Заглавные буквы</b><br>' +
 	'<input name=lower type=checkbox value=1> <b>Маленькие буквы</b><br>' +
-	'<input name=digit type=checkbox value=2> <b>Цифры</b><br><br>Число символов в пароле (3-19): ' +
+	'<input name=digit type=checkbox value=2> <b>Цифры</b><br><br>Число символов в пароле (6-19): ' +
 	'<select name=numbers><option value=3 selected>3</option>');
-	for (j = 4; j <= 19; j++) { writeln('<option value=' + j + '>' + j + '</option>'); }
+	for (j = 7; j <= 19; j++) { writeln('<option value=' + j + '>' + j + '</option>'); }
 	writeln('</select><br><br>' +
 	'<input type=button value=Сгенерировать ... onClick=generate()>   Ваш пароль: ' +
 	'<input name=getback size=30 type=text value=""></form>');
