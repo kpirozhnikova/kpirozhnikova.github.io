@@ -9,10 +9,10 @@
 with (document) {
 	writeln('<title>Генератор паролей </title></head><body bgcolor=black text=white leftmargin=100>' +
 	'<h3>Использовать:</h3><form name=myform>' +
-	'<input name=upper type=checkbox value=0> <b>Заглавные буквы</b><br>' +
-	'<input name=lower type=checkbox value=1> <b>Маленькие буквы</b><br>' +
-	'<input name=digit type=checkbox value=2> <b>Цифры</b><br><br>Число символов в пароле (6-19): ' +
-	'<select name=numbers><option value=3 selected>3</option>');
+	'<input name=upper type=checkbox value=0 checked> <b>Заглавные буквы</b><br>' +
+	'<input name=lower type=checkbox value=1 checked> <b>Маленькие буквы</b><br>' +
+	'<input name=digit type=checkbox value=2 checked> <b>Цифры</b><br><br>Число символов в пароле (6-19): ' +
+	'<select name=numbers><option value=6 selected>6</option>');
 	for (j = 7; j <= 19; j++) { writeln('<option value=' + j + '>' + j + '</option>'); }
 	writeln('</select><br><br>' +
 	'<input type=button value=Сгенерировать ... onClick=generate()>   Ваш пароль: ' +
@@ -53,7 +53,7 @@ function genArray() {
 // --------------------------------------------------------------------------------------------------
 function generate() {
 	if (myform.upper.checked || myform.lower.checked || myform.digit.checked)  { genArray(); }
-	else { alert('Должен быть выбран тип символов!'); myform.upper.checked = true; }
+	else { alert('Должен быть выбран тип символов!');}
 }
 </script>
 </body>
